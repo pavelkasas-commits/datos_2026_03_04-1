@@ -1,7 +1,8 @@
-import datetime
+import pendulum
 
 data_str = input("iveskit da (yyyy-mm-dd ): ")
-data = datetime.datetime.strptime(data_str, "%Y-%m-%d")
-delta = datetime.datetime.today() - data
-print(f"Praejo dienu : {delta.days}")
+data = pendulum.from_format(data_str, "YYYY-MM-DD")
+delta = data.diff(pendulum.today())
+
+print(f"Praejo dienu : {delta.in_days()}")
 
